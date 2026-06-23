@@ -48,16 +48,27 @@ python ppt_font_fixer_cli.py 발표.pptx --font "맑은 고딕"
 python ppt_font_fixer_cli.py 발표.pptx --overwrite # 원본 덮어쓰기
 ```
 
-### 3) 실행 파일(.exe)로 만들기 — 선택
+### 3) 실행 파일(.exe)로 빌드 — 파이썬 없는 PC 배포용
 
-파이썬이 없는 PC에서도 쓰려면 [PyInstaller](https://pyinstaller.org)로 단일 exe를 만들 수 있습니다:
+파이썬이 설치되지 않은 PC에서도 쓰려면 단일 `.exe`로 빌드하세요.
+
+**가장 쉬운 방법 (Windows):** `build.bat` 더블클릭
+가상환경 생성 → 의존성 설치 → 빌드까지 자동으로 진행되고,
+결과물은 `dist\PPT폰트정리기.exe` (단일 파일)로 나옵니다.
+
+**수동 빌드:**
 
 ```bash
-pip install pyinstaller tkinterdnd2
-pyinstaller --noconsole --onefile --name PPT폰트정리기 ppt_font_fixer.py
+pip install -r requirements.txt
+pyinstaller PPT폰트정리기.spec
 ```
 
-> tkinterdnd2를 포함시키려면 빌드 시 `--collect-all tkinterdnd2` 옵션을 추가하세요.
+`PPT폰트정리기.spec`은 드래그앤드롭 라이브러리(`tkinterdnd2`)의 네이티브
+바이너리까지 자동으로 포함(`collect_all`)하므로, 별도 옵션 없이 그대로 빌드하면
+드래그앤드롭이 동작하는 exe가 만들어집니다. 아이콘을 넣고 싶으면 spec 파일의
+`icon=` 줄 주석을 해제하세요.
+
+> 빌드는 **배포 대상과 같은 OS**에서 해야 합니다(Windows exe는 Windows에서 빌드).
 
 ## 구성 파일
 
@@ -67,6 +78,9 @@ pyinstaller --noconsole --onefile --name PPT폰트정리기 ppt_font_fixer.py
 | `ppt_font_fixer.py` | GUI(드래그앤드롭) 프로그램 |
 | `ppt_font_fixer_cli.py` | 명령줄 버전 |
 | `test_font_replacer.py` | 핵심 로직 검증 테스트 |
+| `requirements.txt` | 실행/빌드 의존성 |
+| `PPT폰트정리기.spec` | PyInstaller 빌드 스펙 |
+| `build.bat` | Windows 원클릭 빌드 스크립트 |
 
 ## 테스트
 
