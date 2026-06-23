@@ -60,10 +60,10 @@ python ppt_font_fixer_cli.py 발표.pptx --overwrite # 원본 덮어쓰기
 
 ```bash
 pip install -r requirements.txt
-pyinstaller PPT폰트정리기.spec
+pyinstaller build.spec
 ```
 
-`PPT폰트정리기.spec`은 드래그앤드롭 라이브러리(`tkinterdnd2`)의 네이티브
+`build.spec`은 드래그앤드롭 라이브러리(`tkinterdnd2`)의 네이티브
 바이너리까지 자동으로 포함(`collect_all`)하므로, 별도 옵션 없이 그대로 빌드하면
 드래그앤드롭이 동작하는 exe가 만들어집니다. 아이콘을 넣고 싶으면 spec 파일의
 `icon=` 줄 주석을 해제하세요.
@@ -79,7 +79,7 @@ pyinstaller PPT폰트정리기.spec
 | `ppt_font_fixer_cli.py` | 명령줄 버전 |
 | `test_font_replacer.py` | 핵심 로직 검증 테스트 |
 | `requirements.txt` | 실행/빌드 의존성 |
-| `PPT폰트정리기.spec` | PyInstaller 빌드 스펙 |
+| `build.spec` | PyInstaller 빌드 스펙 |
 | `build.bat` | Windows 원클릭 빌드 스크립트 |
 
 ## 테스트

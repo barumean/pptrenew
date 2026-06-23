@@ -4,4 +4,5 @@ __pycache__/
 *.tmp
 build/
 dist/
-*.spec
+.venv/
+# 주의: 빌드 스펙(build.spec)은 저장소에 포함되어야 하므로 *.spec 을 무시하지 않습니다.

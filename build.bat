@@ -31,7 +31,7 @@ if exist build rmdir /s /q build
 if exist dist rmdir /s /q dist
 
 echo [4/4] EXE 빌드 (PyInstaller)...
-pyinstaller PPT폰트정리기.spec --noconfirm
+pyinstaller build.spec --noconfirm
 if errorlevel 1 (
     echo [오류] 빌드 실패.
     pause & exit /b 1
