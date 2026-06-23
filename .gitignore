@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.fixtmp
+*.tmp
+build/
+dist/
+*.spec
